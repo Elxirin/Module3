@@ -1,0 +1,69 @@
+package com.capgemini.collections;
+
+import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.BeanFactoryAware;
+import org.springframework.beans.factory.BeanNameAware;
+import org.springframework.beans.factory.DisposableBean;
+import org.springframework.beans.factory.InitializingBean;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
+
+import com.capgemini.FirstDemo.Point;
+
+public class Circle implements BeanNameAware, BeanFactoryAware, ApplicationContextAware, InitializingBean, DisposableBean {
+
+	private Point center;
+
+	public Point getCenter() {
+		return center;
+	}
+
+	public void setCenter(Point center) {
+		this.center = center;
+	}
+	
+	public void draw() {
+		System.out.println("Circle Points ("+center.getX()+", "+ center.getY() +")");
+	}
+	
+	@Override
+	public void setBeanName(String beanName) {	
+		System.out.println("Bean name aware: "+ beanName);
+	}
+	
+	@Override
+	public void setBeanFactory(BeanFactory beanFactory) throws BeansException {
+		
+		System.out.println("BeanFatory aware method executed: "+ beanFactory);
+	}
+	
+	@Override
+	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+	 
+		System.out.println("Application Context aware" + applicationContext);
+	
+	}
+	
+	@Override
+	public void afterPropertiesSet() throws Exception {
+		System.out.println("Initializing Bean after Properties Set");
+		
+	}
+	
+	public void myInit() {
+		System.out.println("MyInit Executed");
+	}
+
+	public void tearDown() {
+		System.out.println("Me destroy method Executed");
+	}
+	
+	@Override
+	public void destroy() throws Exception {
+		System.out.println("Disposable bean Destroy Method Executed");
+	}
+	
+	
+	
+}
