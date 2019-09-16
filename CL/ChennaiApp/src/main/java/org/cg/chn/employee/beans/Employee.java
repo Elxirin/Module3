@@ -1,28 +1,17 @@
-package com.cg.emp.beans;
+package org.cg.chn.employee.beans;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.Pattern;
-
-import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 public class Employee {
 	
 	@Id
 	private int id;
-	@NotEmpty(message = "Name is Empty")
-	@Pattern(regexp = "[A-Z][A-Za-z]{2,}", message=" Name should contain letters")
 	private String name;
-	@Pattern(regexp = "(Male|Female)", message = "Gender should be Male or Female")
 	private String gender;
-	@Min(18)
-	@Max(60)
 	private int age;
-	private double salary;
-	
+	private Double salary;
 	public int getId() {
 		return id;
 	}
@@ -47,12 +36,17 @@ public class Employee {
 	public void setAge(int age) {
 		this.age = age;
 	}
-	public double getSalary() {
+	public Double getSalary() {
 		return salary;
 	}
-	public void setSalary(double salary) {
+	public void setSalary(Double salary) {
 		this.salary = salary;
 	}
 	
 	
+	@Override
+	public String toString() {
+		return "Employee [id=" + id + ", name=" + name + ", gender=" + gender + ", age=" + age + ", salary=" + salary
+				+ "]";
+	}
 }

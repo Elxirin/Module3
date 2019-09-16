@@ -9,6 +9,11 @@
 </head>
 <body>
 	<h1>Employee Details</h1>
+	<form action="addEmployee">
+		<input type="submit" value="Add Employee"/>
+	</form>
+	<br/>
+	<br/>
 	<table border="1">
 		<tr>
 			<th>Employee ID</th>

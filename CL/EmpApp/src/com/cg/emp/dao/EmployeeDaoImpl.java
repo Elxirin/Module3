@@ -40,4 +40,15 @@ public class EmployeeDaoImpl implements EmployeeDao{
 		}
 	}
 
+	@Override
+	public List<Employee> addEmployee(Employee emp) throws EmployeeException {
+		try {
+			entityManager.persist(emp);
+			return getAllEmployees();
+		} catch (Exception e) {
+			throw new EmployeeException(e.getMessage());
+			
+		}
+	}
+
 }

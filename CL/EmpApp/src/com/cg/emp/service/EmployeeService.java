@@ -9,4 +9,5 @@ public interface EmployeeService {
 
 	List<Employee> getAllEmployees() throws EmployeeException;
 	List<Employee> deleteEmployee(int id) throws EmployeeException;
+	List<Employee> addEmployee(Employee emp) throws EmployeeException;
 }
