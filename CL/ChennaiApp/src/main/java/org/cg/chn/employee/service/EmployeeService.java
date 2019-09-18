@@ -12,5 +12,5 @@ public interface EmployeeService {
 	Employee getEmployeeById(int id) throws EmployeeException;
 	List<Employee> deleteEmployee(int id) throws EmployeeException;
 	List<Employee> updateEmployee(Employee emp) throws EmployeeException;
-	
+	List<Employee> getEmployeeByGender(String gender) throws EmployeeException;
 }

@@ -64,7 +64,19 @@ public class EmployeeServiceImpl  implements EmployeeService {
 
 	@Override
 	public List<Employee> updateEmployee(Employee emp) throws EmployeeException {
-		return null;
+		if(!employeeRepo.existsById(emp.getId())) {
+			throw new EmployeeException("Employee with id " + emp.getId() +" does not exists");
+		}
+		else {
+			employeeRepo.save(emp);
+			return getAllEmployees();
+		}
+	}
+
+	@Override
+	public List<Employee> getEmployeeByGender(String gender) throws EmployeeException {
+		
+		return employeeRepo.findEmployeeByGender(gender);
 	}
 
 }
